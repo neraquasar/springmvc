@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController
 {
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/", params = {"name"})
     public String home(Model model){
         model.addAttribute("username", "KOSTYA");
         return "home";
+    }
+
+    public String getText(String text){
+        return text.toUpperCase();
     }
 
 

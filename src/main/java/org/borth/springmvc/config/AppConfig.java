@@ -10,6 +10,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import java.util.HashSet;
@@ -27,9 +28,9 @@ public class AppConfig extends WebMvcConfigurerAdapter
     public ITemplateResolver templateResolver()
     {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-        resolver.setPrefix("/");
+        resolver.setPrefix("/template/");
         resolver.setSuffix(".html");
-        resolver.setTemplateMode("HTML5");
+        resolver.setTemplateMode(TemplateMode.HTML);
         resolver.setCacheable(false);
         return resolver;
     }
