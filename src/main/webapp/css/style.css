@@ -1,5 +1,151 @@
-*{
+@font-face {
+    src: url("Bebas-Neue-Book.ttf");
+    font-family: "Bebas-Neue-Book";
+}
+
+body {
     font-family: sans-serif;
-    background-color: #ebebeb;
+    background-color: #f0f0f0;
     color: #696969;
+    height: 100%;
+    margin: 0;
+}
+
+#baseContainer, #header, #footer {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#header{
+    margin-top: 10px;
+}
+
+#header > nav {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+footer {
+    padding: 15px;
+    background-color: #696969;
+    color: #dfdfdf;
+}
+
+nav {
+    display: inline-flex;
+    align-content: flex-end;
+    float: right;
+}
+
+nav a {
+    color: #696969;
+    text-decoration: none;
+    margin: 15px;
+    padding: 5px;
+}
+
+nav a:hover {
+    color: #000000;
+}
+
+.nav-punkt-selekted {
+    border-bottom: 1px solid;
+}
+
+.mini-cards {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    align-content: space-between;
+}
+
+.panel-mini {
+    width: 450px;
+    height: 350px;
+    margin: 30px;
+    background-color: #d9fad3;
+    border-radius: 20px;
+    box-shadow: 0 0 8px;
+    text-align: left;
+}
+
+.blue {
+    background-color: #d2f5ff !important;
+}
+
+.panel-mini-header {
+    margin-left: 30px;
+    font-family: Bebas-Neue-Book;
+    text-transform: uppercase;
+    font-size: 24pt;
+}
+
+.panel-mini > p {
+    padding: 20px;
+    margin: 0;
+    line-height: 16pt;
+}
+
+.sprite-chapter1, .sprite-chapter2, .sprite-chapter3, .sprite-chapter4 {
+    width: 150px;
+    height: 150px;
+    background: url(../sprite.png) no-repeat;
+    display: inline-block;
+    float: left;
+    margin: 20px;
+}
+
+.sprite-chapter1 {
+    background-position: -7px -1290px;
+}
+
+.sprite-chapter2 {
+    background-position: -7px -1463px;
+}
+
+.sprite-chapter3 {
+    background-position: -7px -1634px;
+}
+
+.sprite-chapter4 {
+    background-position: -7px -1799px;
+}
+
+#footer{
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+#footer>div{
+    padding-left: 10%;
+    border-left: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#footer>div:first-child{
+    border-left: none;
+}
+
+#footer>div>a{
+    color: inherit;
+    text-decoration: none;
+    font-size: 10pt;
+    margin-top: 10px;
+}
+#footer>div>a:hover{
+    color: white;
+}
+#footer>div>span{
+    font-size: 8pt;
+    margin-top: 5px;
 }

@@ -7,14 +7,92 @@
     <link rel="stylesheet" type="text/css" media="all" href="../css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-
 <header>
-    <h1>Hello, World!</h1>
-    <h2 th:text="'Hello, '+${username}+'!!!'">Hello, Username!!!</h2>
-    <p>
-        <span th:text="${@homeController.getText('asdfg')}">Test text</span>
-    </p>
+    <div id="header">
+        <img src="../logo_half_horizontall.svg" width="200px">
+        <nav>
+            <a href="home.html" class="nav-punkt-selekted">Главная</a>
+            <a href="home.html">Услуги</a>
+            <a href="home.html">Команда</a>
+            <a href="home.html">Вакансии</a>
+            <a href="home.html">Контакты</a>
+        </nav>
+    </div>
 </header>
-
+<div id="baseContainer">
+    <!--<h2 th:text="'Hello, '+${username}+'!!!'">Hello, Username!!!</h2>-->
+    <!--<p>
+        <span th:text="${@homeController.getText('asdfg')}">Test text</span>
+    </p>-->
+    <div class="mini-cards">
+        <div>
+            <span class="panel-mini-header">Разработка ПО</span>
+            <div class="panel-mini">
+                <div class="sprite-chapter1"></div>
+                <p>Наша компания реализует как полный цикл разработки, так и частичный, в зависимости от потребности заказчика. При разработке корпоративного ПО
+                    мы используем существующие ITIL технологии, разработанные и поддерживаемые известными, зарекомендовавшими себя компаниями...
+                </p>
+            </div>
+        </div>
+        <div>
+            <span class="panel-mini-header">Бизнес-процессы</span>
+            <div class="panel-mini blue">
+                <div class="sprite-chapter2"></div>
+                <p>
+                    Компания Borth E-Commerce помогает руководителям и менеджерам предприятий переложить все необходимые процессы, протекающие в организации, на
+                    реально работающую платформу и сделать управление компанией осязаемым...
+                </p>
+            </div>
+        </div>
+        <div>
+            <span class="panel-mini-header">Web-разработка</span>
+            <div class="panel-mini blue">
+                <div class="sprite-chapter3"></div>
+                <p>
+                    На сегодняшний день Web-сайт - это неотъемлемый атрибут любой компании, коммерческой и некоммерческой. Сайт необходим как основная точка
+                    доступа
+                    к информации о продуктах, услугах, деятельности организации. Зачастую сайт становится основной витриной для магазинов и сервисных
+                    компаний...
+                </p>
+            </div>
+        </div>
+        <div>
+            <span class="panel-mini-header">Тестирование</span>
+            <div class="panel-mini">
+                <div class="sprite-chapter4"></div>
+                <p>
+                    Проблемы, связанные с низкой производительностью программного обеспечения или сетевой инфраструктуры, могут стать скрытой причиной
+                    пробуксовки
+                    любого бизнеса...
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div>
+            <b>Меню</b>
+            <a href="home.html">Главная</a>
+            <a href="home.html">Разработка ПО</a>
+            <a href="home.html">Бизнес-процессы</a>
+            <a href="home.html">Web-разработка</a>
+        </div>
+        <div>
+            <a href="home.html">Тестирование</a>
+            <a href="home.html">Команда</a>
+            <a href="home.html">Контакты</a>
+            <a href="home.html">Вакансии</a>
+        </div>
+        <div>
+            <a href="home.html">Реквизиты</a>
+        </div>
+        <div>
+            <img src="../logo_half_horizontall_white.svg" width="100px">
+            <span>© 2004-2017 Borth E-Commerce GMBH</span>
+            <span>All Rights Reserved</span>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
