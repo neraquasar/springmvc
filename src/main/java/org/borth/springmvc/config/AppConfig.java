@@ -1,7 +1,9 @@
 package org.borth.springmvc.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -21,6 +23,7 @@ import java.util.Set;
  */
 @Configuration
 @EnableWebMvc
+@ComponentScan
 public class AppConfig extends WebMvcConfigurerAdapter
 {
 
@@ -30,6 +33,7 @@ public class AppConfig extends WebMvcConfigurerAdapter
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setPrefix("/template/");
         resolver.setSuffix(".html");
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setTemplateMode(TemplateMode.HTML);
         resolver.setCacheable(false);
         return resolver;
@@ -54,6 +58,7 @@ public class AppConfig extends WebMvcConfigurerAdapter
         resolver.setTemplateEngine(templateEngine());
         resolver.setOrder(1);
         resolver.setViewNames(new String[]{"*", "js/*", "template/*"});
+        resolver.setCharacterEncoding("UTF-8");
         return resolver;
     }
 
@@ -61,5 +66,13 @@ public class AppConfig extends WebMvcConfigurerAdapter
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
     {
         configurer.enable();
+    }
+
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
 }
