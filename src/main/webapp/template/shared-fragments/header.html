@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HEADER FRAGMENT - FOR INSERT ONLY</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <div id="header" th:fragment="header">
+        <img src="../../logo_half_horizontall.svg" width="200px">
+        <nav>
+            <a href="../home.html" class="nav-punkt-selekted" th:text="#{home.title}">Главная</a>
+            <a href="../home.html" th:text="#{services.title}">Услуги</a>
+            <a href="../home.html" th:text="#{team.title}">Команда</a>
+            <a href="../home.html" th:text="#{vacancies.title}">Вакансии</a>
+            <a href="../home.html" th:text="#{contacts.title}">Контакты</a>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

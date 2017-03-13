@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{home.title}">Home</title>
     <link rel="stylesheet" type="text/css" media="all" href="../css/style.css" th:href="@{/css/style.css}">
+    <script src="../js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<header>
-    <div id="header">
-        <img src="../logo_half_horizontall.svg" width="200px">
-        <nav>
-            <a href="home.html" class="nav-punkt-selekted" th:text="#{home.title}">Главная</a>
-            <a href="home.html" th:text="#{services.title}">Услуги</a>
-            <a href="home.html" th:text="#{team.title}">Команда</a>
-            <a href="home.html" th:text="#{vacancies.title}">Вакансии</a>
-            <a href="home.html" th:text="#{contacts.title}">Контакты</a>
-        </nav>
-    </div>
-</header>
+<div th:replace="shared-fragments/header::header"/>
 <div id="baseContainer">
     <!--<h2 th:text="'Hello, '+${username}+'!!!'">Hello, Username!!!</h2>-->
     <!--<p>
         <span th:text="${@homeController.getText('asdfg')}">Test text</span>
     </p>-->
-    <span th:text="${justWord}">For just word</span>
+    <!--<span th:text="${justWord}">For just word</span>-->
     <div class="mini-cards">
         <div>
             <span class="panel-mini-header" th:text="#{sofoware.development.title}">Разработка ПО</span>
             <div class="panel-mini">
                 <div class="sprite-chapter1"></div>
                 <p th:text="#{sofoware.development.text.mini}">Наша компания реализует как полный цикл разработки, так и частичный, в зависимости от
-                                                                     потребности заказчика. При разработке
+                    потребности заказчика. При разработке
                     корпоративного ПО
                     мы используем существующие ITIL технологии, разработанные и поддерживаемые известными, зарекомендовавшими себя компаниями...
                 </p>
@@ -72,30 +61,6 @@
         </div>
     </div>
 </div>
-<footer>
-    <div id="footer">
-        <div>
-            <b>Меню</b>
-            <a href="home.html" th:text="#{home.title}">Главная</a>
-            <a href="home.html" th:text="#{sofoware.development.title}">Разработка ПО</a>
-            <a href="home.html" th:text="#{business.processes.title}">Бизнес-процессы</a>
-            <a href="home.html" th:text="#{web.development.title}">Web-разработка</a>
-        </div>
-        <div>
-            <a href="home.html" th:text="#{testing.title}">Тестирование</a>
-            <a href="home.html" th:text="#{team.title}">Команда</a>
-            <a href="home.html" th:text="#{contacts.title}">Контакты</a>
-            <a href="home.html" th:text="#{vacancies.title}">Вакансии</a>
-        </div>
-        <div>
-            <a href="home.html" th:text="#{imprint.title}">Реквизиты</a>
-        </div>
-        <div>
-            <img src="../logo_half_horizontall_white.svg" width="100px">
-            <span th:text="#{borth.e.commerce.gmbh.years}">© 2004-2017 Borth E-Commerce GMBH</span>
-            <span th:text="#{all.rights.reserved}">All Rights Reserved</span>
-        </div>
-    </div>
-</footer>
+<div th:replace="shared-fragments/footer::footer"/>
 </body>
 </html>

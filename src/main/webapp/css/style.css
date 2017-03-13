@@ -1,26 +1,55 @@
 @font-face {
+    src: url("PTAstraSans-Regular.ttf");
+    font-family: "PT Astra Sans";
+}
+
+@font-face {
     src: url("Bebas-Neue-Book.ttf");
     font-family: "Bebas-Neue-Book";
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "PT Astra Sans", sans-serif;
     background-color: #f0f0f0;
     color: #696969;
     height: 100%;
     margin: 0;
 }
 
+button {
+    border: 2px solid #256dff;
+    border-radius: 15px;
+    padding: 0px 10px;
+    font-size: 16pt;
+    font-family: "PT Astra Sans";
+    color: #256dff;
+    background: none;
+}
+
+input[type="text"] {
+    font-size: 12pt;
+    font-family: "PT Astra Sans";
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+input[type="text"]:focus{
+    border: 1px solid #256dff;
+}
+
 #baseContainer, #header, #footer {
     max-width: 1100px;
     margin: auto;
+}
+
+#header, #footer {
     display: flex;
     align-items: flex-end;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 
-#header{
+#header {
     margin-top: 10px;
 }
 
@@ -28,7 +57,6 @@ body {
     display: flex;
     flex-flow: row wrap;
 }
-
 
 footer {
     padding: 15px;
@@ -118,12 +146,12 @@ nav a:hover {
     background-position: -7px -1799px;
 }
 
-#footer{
+#footer {
     align-items: stretch;
     flex-wrap: nowrap;
 }
 
-#footer>div{
+#footer > div {
     padding-left: 10%;
     border-left: 1px solid gray;
     display: flex;
@@ -132,20 +160,91 @@ nav a:hover {
     align-items: flex-start;
 }
 
-#footer>div:first-child{
+#footer > div:first-child {
     border-left: none;
 }
 
-#footer>div>a{
+#footer > div > a {
     color: inherit;
     text-decoration: none;
     font-size: 10pt;
     margin-top: 10px;
 }
-#footer>div>a:hover{
+
+#footer > div > a:hover {
     color: white;
 }
-#footer>div>span{
+
+#footer > div > span {
     font-size: 8pt;
     margin-top: 5px;
 }
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid lightgray;
+}
+
+th {
+    padding: 5px 15px;
+    background-color: #d2f5ff;
+}
+
+td {
+    padding: 0px 8px;
+}
+
+td > input[type='checkbox'] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    
+    border: 1px solid gray;
+    padding: 0px 3px;
+    background-color: lightgray;
+}
+
+td > input[type='checkbox']:checked {
+    background-color: white;
+    padding: 0px 3px;
+}
+
+td > input[type='checkbox']:after {
+    content: '\2714';
+    color: lightgray;
+    font-size: 14px;
+}
+
+td > input[type='checkbox']:checked:after {
+    content: '\2714';
+    color: #256dff;
+    font-size: 14px;
+}
+
+.pop-up {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+}
+
+.pop-up .pop-up-content {
+    margin: 80px auto 0px auto;
+    max-width: 600px;
+    min-height: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FOOTER FRAGMENT - FOR INSERT ONLY</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<footer>
+    <div id="footer" th:fragment="footer">
+        <div>
+            <b>Меню</b>
+            <a href="../home.html" th:text="#{home.title}">Главная</a>
+            <a href="../home.html" th:text="#{sofoware.development.title}">Разработка ПО</a>
+            <a href="../home.html" th:text="#{business.processes.title}">Бизнес-процессы</a>
+            <a href="../home.html" th:text="#{web.development.title}">Web-разработка</a>
+        </div>
+        <div>
+            <a href="../home.html" th:text="#{testing.title}">Тестирование</a>
+            <a href="../home.html" th:text="#{team.title}">Команда</a>
+            <a href="../home.html" th:text="#{contacts.title}">Контакты</a>
+            <a href="../home.html" th:text="#{vacancies.title}">Вакансии</a>
+        </div>
+        <div>
+            <a href="../home.html" th:text="#{imprint.title}">Реквизиты</a>
+        </div>
+        <div>
+            <img src="../../logo_half_horizontall_white.svg" width="100px">
+            <span th:text="#{borth.e.commerce.gmbh.years}">© 2004-2017 Borth E-Commerce GMBH</span>
+            <span th:text="#{all.rights.reserved}">All Rights Reserved</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

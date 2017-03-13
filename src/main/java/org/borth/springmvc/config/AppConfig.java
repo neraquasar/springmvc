@@ -42,9 +42,6 @@ public class AppConfig extends WebMvcConfigurerAdapter
     @Bean
     public SpringTemplateEngine templateEngine()
     {
-        Set<IDialect> dialects = new HashSet<IDialect>();
-        dialects.add(new SpringStandardDialect());
-
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setTemplateResolver(templateResolver());
         engine.setDialect(new SpringStandardDialect());

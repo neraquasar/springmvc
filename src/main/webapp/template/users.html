@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/style.css" th:href="@{/css/style.css}">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#popup1").hide();
+            jQuery('button').on('click', function () {
+                $("#popup1").show()
+            })
+        })
+    </script>
+</head>
+<body>
+<div th:replace="shared-fragments/header::header"/>
+<div id="baseContainer">
+    <h1>User management</h1>
+    <button id="button-new-user">New user</button>
+    <table>
+        <thead>
+        <tr>
+            <th>Login</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+        <tr th:each="user:${userList}">
+            <td th:text="${user.login}">II</td>
+            <td th:text="${user.firstname}">Ivan</td>
+            <td th:text="${user.lastname}">Ivanov</td>
+            <td><input type="checkbox" th:checked="${user.active}"></td>
+        </tr>
+        <tr>
+            <td>SS</td>
+            <td>Sergey</td>
+            <td>Sergeev</td>
+            <td><input type="checkbox" checked class="checkbox"></td>
+        </tr>
+        <tr>
+            <td>AV</td>
+            <td>Onotoliy</td>
+            <td>Vassernam</td>
+            <td><input type="checkbox" checked class="checkbox"></td>
+        </tr>
+        <tr>
+            <td>KB</td>
+            <td>Konstruktorskoe</td>
+            <td>Byro</td>
+            <td><input type="checkbox" checked class="checkbox"></td>
+        </tr>
+        <tr>
+            <td>BB</td>
+            <td>Kldcfnui36</td>
+            <td>Ho9w3487v</td>
+            <td><input type="checkbox" checked class="checkbox"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="shared-fragments/footer::footer"/>
+<div id="popup1" class="pop-up">
+    <form class="pop-up-content" method="post" action="#" th:action="@{/users}" th:object="${user}">
+        <input id="input-login" type="text" placeholder="Login" th:field="*{login}">
+        <input id="input-firstname" type="text" placeholder="First name" th:field="*{firstname}">
+        <input id="input-lastname" type="text" placeholder="Last name" th:field="*{lastname}">
+        <button>Save</button>
+    </form>
+</div>
+<script>
+</script>
+</body>
+</html>
