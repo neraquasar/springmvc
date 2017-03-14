@@ -233,7 +233,7 @@ td > input[type='checkbox']:checked:after {
     top: 0px;
 }
 
-.pop-up .pop-up-content {
+.input {
     margin: 80px auto 0px auto;
     max-width: 600px;
     min-height: 200px;

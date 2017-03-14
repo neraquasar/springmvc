@@ -18,7 +18,7 @@
 <div th:replace="shared-fragments/header::header"/>
 <div id="baseContainer">
     <h1>User management</h1>
-    <button id="button-new-user">New user</button>
+    <button id="button-new-account">New account</button>
     <table>
         <thead>
         <tr>
@@ -29,11 +29,11 @@
         </tr>
         </thead>
         <tbody th:remove="all-but-first">
-        <tr th:each="user:${userList}">
-            <td th:text="${user.login}">II</td>
-            <td th:text="${user.firstname}">Ivan</td>
-            <td th:text="${user.lastname}">Ivanov</td>
-            <td><input type="checkbox" th:checked="${user.active}"></td>
+        <tr th:each="account:${accountList}">
+            <td th:text="${account.login}">II</td>
+            <td th:text="${account.firstname}">Ivan</td>
+            <td th:text="${account.lastname}">Ivanov</td>
+            <td><input type="checkbox" th:checked="${account.active}"></td>
         </tr>
         <tr>
             <td>SS</td>
@@ -64,7 +64,7 @@
 </div>
 <div th:replace="shared-fragments/footer::footer"/>
 <div id="popup1" class="pop-up">
-    <form class="pop-up-content" method="post" action="#" th:action="@{/users}" th:object="${user}">
+    <form class="input" method="post" action="#" th:action="@{/accounts}" th:object="${account}">
         <input id="input-login" type="text" placeholder="Login" th:field="*{login}">
         <input id="input-firstname" type="text" placeholder="First name" th:field="*{firstname}">
         <input id="input-lastname" type="text" placeholder="Last name" th:field="*{lastname}">

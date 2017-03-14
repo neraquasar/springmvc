@@ -1,8 +1,6 @@
 package org.borth.springmvc.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -23,7 +21,9 @@ import java.util.Set;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan("org.borth.springmvc")
+@Import({PersistenceContext.class, WebSecurityConfig.class})
+@PropertySource("classpath:config.properties")
 public class AppConfig extends WebMvcConfigurerAdapter
 {
 
@@ -66,7 +66,8 @@ public class AppConfig extends WebMvcConfigurerAdapter
     }
 
     @Bean
-    public ResourceBundleMessageSource messageSource() {
+    public ResourceBundleMessageSource messageSource()
+    {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
