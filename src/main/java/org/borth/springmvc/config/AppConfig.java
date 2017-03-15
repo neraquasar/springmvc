@@ -18,7 +18,6 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.borth.springmvc")
-@Import({PersistenceContext.class, WebSecurityConfig.class})
 @PropertySource("classpath:config.properties")
 public class AppConfig extends WebMvcConfigurerAdapter
 {

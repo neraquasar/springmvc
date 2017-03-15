@@ -11,7 +11,7 @@ public class DefaultWebAppInitializer extends AbstractAnnotationConfigDispatcher
     @Override
     protected Class<?>[] getRootConfigClasses()
     {
-        return new Class<?>[]{AppConfig.class};
+        return new Class<?>[]{AppConfig.class, PersistenceContext.class, WebSecurityConfig.class};
     }
 
     @Override
