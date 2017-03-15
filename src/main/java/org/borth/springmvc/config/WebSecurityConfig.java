@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-import javax.sql.DataSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by kd on 14.03.2017.
@@ -17,10 +17,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, DataSource dataSource) throws Exception
+    public void configureGlobal(AuthenticationManagerBuilder auth, UserDetailsService userDetailsService) throws Exception
     {
-        auth.jdbcAuthentication().dataSource(dataSource).withDefaultSchema()
-            .withUser("user").password("password").roles("USER").and()
-            .withUser("admin").password("password").roles("USER", "ADMIN");
+        auth.eraseCredentials(true)
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(new BCryptPasswordEncoder());
     }
+
+
 }
