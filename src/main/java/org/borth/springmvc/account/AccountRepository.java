@@ -1,6 +1,6 @@
-package org.borth.springmvc.persistence.repository;
+package org.borth.springmvc.account;
 
-import org.borth.springmvc.persistence.model.Account;
+import org.borth.springmvc.account.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

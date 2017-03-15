@@ -1,4 +1,4 @@
-package org.borth.springmvc.persistence.model;
+package org.borth.springmvc.account;
 
 import org.hibernate.annotations.GenericGenerator;
 

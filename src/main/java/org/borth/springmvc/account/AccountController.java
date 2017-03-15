@@ -1,10 +1,9 @@
-package org.borth.springmvc.controller;
+package org.borth.springmvc.account;
 
-import org.borth.springmvc.persistence.model.Account;
-import org.borth.springmvc.persistence.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +18,15 @@ import java.util.List;
 @Controller
 public class AccountController
 {
-    @Autowired
+
     private AccountService accountService;
+
+    @Autowired
+    public AccountController(AccountService accountService)
+    {
+        Assert.notNull(accountService);
+        this.accountService = accountService;
+    }
 
     @GetMapping("/accounts")
     public String accountsGet(final Account account)

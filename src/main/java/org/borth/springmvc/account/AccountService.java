@@ -1,11 +1,10 @@
-package org.borth.springmvc.persistence.service;
+package org.borth.springmvc.account;
 
-import org.borth.springmvc.persistence.model.Account;
-import org.borth.springmvc.persistence.repository.AccountRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,15 @@ public class AccountService
 
     private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
-    @Autowired
+
     private AccountRepository repository;
+
+    @Autowired
+    public AccountService(AccountRepository repository)
+    {
+        Assert.notNull(repository);
+        this.repository = repository;
+    }
 
     public Account create(Account account)
     {

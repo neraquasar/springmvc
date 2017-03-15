@@ -15,16 +15,12 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
-    @Autowired
-    private DataSource dataSource;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
+    public void configureGlobal(AuthenticationManagerBuilder auth, DataSource dataSource) throws Exception
     {
         auth.jdbcAuthentication().dataSource(dataSource).withDefaultSchema()
             .withUser("user").password("password").roles("USER").and()
             .withUser("admin").password("password").roles("USER", "ADMIN");
     }
-
-
 }

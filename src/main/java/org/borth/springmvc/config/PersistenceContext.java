@@ -20,12 +20,17 @@ import javax.sql.DataSource;
  * Created by kd on 13.03.2017.
  */
 @Configuration
-@EnableJpaRepositories("org.borth.springmvc.persistence")
+@EnableJpaRepositories("org.borth.springmvc")
 @EnableTransactionManagement
 public class PersistenceContext
 {
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public PersistenceContext(Environment environment)
+    {
+        this.environment = environment;
+    }
 
     @Bean
     public DataSource dataSource()

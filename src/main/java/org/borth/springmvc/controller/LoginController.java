@@ -1,12 +1,13 @@
 package org.borth.springmvc.controller;
 
-import org.borth.springmvc.persistence.model.Account;
-import org.borth.springmvc.persistence.service.AccountService;
+import org.borth.springmvc.account.Account;
+import org.borth.springmvc.account.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.annotation.SessionScope;
@@ -21,8 +22,14 @@ public class LoginController
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    @Autowired
     private AccountService accountService;
+
+    @Autowired
+    public LoginController(AccountService accountService)
+    {
+        Assert.notNull(accountService);
+        this.accountService = accountService;
+    }
 
     @GetMapping("/login")
     public String showLoginForm()
