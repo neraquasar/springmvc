@@ -29,6 +29,9 @@ public class Account
     private String login;
 
     @Column
+    private String password;
+
+    @Column
     private boolean active;
 
     @Column
@@ -72,6 +75,16 @@ public class Account
     public void setLogin(String login)
     {
         this.login = login;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public boolean isActive()
