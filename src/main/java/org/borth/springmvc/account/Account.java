@@ -31,6 +31,9 @@ public class Account
     @Column
     private boolean active;
 
+    @Column
+    private Role role;
+
     public Long getId()
     {
         return id;
@@ -79,6 +82,16 @@ public class Account
     public void setActive(boolean active)
     {
         this.active = active;
+    }
+
+    public Role getRole()
+    {
+        return role;
+    }
+
+    public void setRole(Role role)
+    {
+        this.role = role;
     }
 
     @Override
