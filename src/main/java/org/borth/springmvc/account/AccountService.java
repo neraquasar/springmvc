@@ -18,7 +18,6 @@ public class AccountService
 
     private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
-
     private AccountRepository repository;
 
     @Autowired

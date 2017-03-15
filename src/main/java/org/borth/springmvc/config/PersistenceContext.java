@@ -53,7 +53,7 @@ public class PersistenceContext
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("org.borth.springmvc.persistence");
+        factory.setPackagesToScan("org.borth.springmvc");
         factory.setDataSource(dataSource());
         return factory;
     }
