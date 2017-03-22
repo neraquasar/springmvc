@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.Assert;
 
 /**
  * Created by kd on 14.03.2017.
@@ -17,8 +18,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
 
+    private final UserDetailsService userDetailsService;
+
     @Autowired
-    private UserDetailsService userDetailsService;
+    public WebSecurityConfig(UserDetailsService userDetailsService)
+    {
+        Assert.notNull(userDetailsService);
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception
@@ -29,10 +36,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception
+    protected void configure(HttpSecurity http) throws Exception
     {
-        httpSecurity
+        http
                 .authorizeRequests()
-                .anyRequest().authenticated();
+                .antMatchers("/css/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").permitAll();
     }
 }

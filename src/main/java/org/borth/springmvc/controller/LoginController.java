@@ -22,7 +22,7 @@ public class LoginController
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     @Autowired
     public LoginController(AccountService accountService)
@@ -31,9 +31,16 @@ public class LoginController
         this.accountService = accountService;
     }
 
-    @GetMapping("/login")
+    @GetMapping(value = "/login")
     public String showLoginForm()
     {
+        return "login";
+    }
+
+    @GetMapping(value = "/login", params = "error")
+    public String showLoginForm(Model model)
+    {
+        model.addAttribute("loginError", "Login Error!!!!!!");
         return "login";
     }
 
@@ -45,8 +52,7 @@ public class LoginController
         if (account == null)
         {
             logger.debug("Login failed");
-            model.addAttribute("loginError", "Login Error!!!!!!");
-            return "login";
+            return "login?error";
         }
         else
         {
