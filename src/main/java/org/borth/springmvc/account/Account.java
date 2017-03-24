@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Created by kd on 10.03.2017.
+ * Account of person
+ *
+ * @version 1.1
+ * @author Konstantin Valerievich Dichenko
  */
 @Entity
 public class Account
@@ -36,6 +39,17 @@ public class Account
 
     @Column
     private Role role;
+
+    protected Account()
+    {
+    }
+
+    public Account(String login, String password, Role role)
+    {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
 
     public Long getId()
     {
