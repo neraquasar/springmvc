@@ -3,6 +3,8 @@ package org.borth.springmvc.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -66,5 +68,11 @@ public class AppConfig extends WebMvcConfigurerAdapter
         messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder()
+    {
+        return new BCryptPasswordEncoder();
     }
 }
