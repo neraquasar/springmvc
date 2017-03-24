@@ -3,9 +3,11 @@ package org.borth.springmvc.account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +20,28 @@ public class AccountService
 
     private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
-    private AccountRepository repository;
+    private final AccountRepository repository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AccountService(AccountRepository repository)
+    public AccountService(AccountRepository repository, PasswordEncoder passwordEncoder)
     {
         Assert.notNull(repository);
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @PostConstruct
+    private void init()
+    {
+        create(new Account("kd", "qwertz", Role.ADMIN));
     }
 
     public Account create(Account account)
     {
         logger.debug("Creating account {}", account.toString());
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
         Account created = repository.save(account);
         logger.debug("Created account {}", account.toString());
         return created;
@@ -50,7 +62,7 @@ public class AccountService
 
     public Account findByLogin(String login)
     {
-        logger.debug("Looking fot user with login {}", login);
+        logger.debug("Looking fot user with login \"{}\"", login);
         Account found = repository.findByLogin(login);
         if (found == null)
             logger.debug("Account not found");
