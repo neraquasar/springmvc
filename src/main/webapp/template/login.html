@@ -9,9 +9,11 @@
 <div id="baseContainer">
     <h1>Login</h1>
     <span th:text="${loginError}">Login error</span>
-    <form class="input" method="post" th:action="@{/login}">
-        <input placeholder="Login" id="login" name="login">
-        <button>Login</button>
+    <form class="input" method="post" th:action="@{/access}">
+        <input placeholder="Login" id="username" name="username" autofocus="autofocus">
+        <input placeholder="Password" id="password" type="password">
+        <!--<button type="submit">Login</button>-->
+        <input type="submit" value="Log in"/>
     </form>
 </div>
 </body>

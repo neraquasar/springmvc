@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.Assert;
 
 /**
@@ -21,6 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     private final UserDetailsService userDetailsService;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     public WebSecurityConfig(UserDetailsService userDetailsService)
     {
         Assert.notNull(userDetailsService);
@@ -30,9 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-        auth.eraseCredentials(true)
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(new BCryptPasswordEncoder());
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
@@ -43,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .antMatchers("/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll();
+                .formLogin().loginPage("/login").permitAll().failureUrl("/login?error").loginProcessingUrl("/access")
+                .and().logout().logoutSuccessUrl("/");
     }
 }
