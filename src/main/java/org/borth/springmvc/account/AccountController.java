@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * Created by kd on 09.03.2017.
+ * Controller to work with user accounts
  */
 @Controller
 public class AccountController
@@ -58,7 +58,7 @@ public class AccountController
 
     @ModelAttribute
     public long accountsNumber(){
-        return accountService.cout();
+        return accountService.count();
     }
 
     @ModelAttribute
