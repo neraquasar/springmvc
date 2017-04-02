@@ -35,7 +35,8 @@ public class AccountService
     @PostConstruct
     private void init()
     {
-        create(new Account("kd", "qwertz", Role.ADMIN));
+        if (findByLogin("kd") == null)
+            create(new Account("kd", "qwertz", Role.ADMIN));
     }
 
     public Account create(Account account)
@@ -55,7 +56,7 @@ public class AccountService
         return accounts;
     }
 
-    public long cout()
+    public long count()
     {
         return repository.count();
     }
