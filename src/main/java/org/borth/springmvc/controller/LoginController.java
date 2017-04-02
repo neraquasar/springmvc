@@ -8,11 +8,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.SessionScope;
 
 /**
- * Created by kd on 13.03.2017.
+ * Controller to log in user
  */
 @Controller
 @SessionScope
@@ -45,21 +47,4 @@ public class LoginController
         return "login";
     }
 
-    @RequestMapping("/access")
-    public String verifyLogin(String username, String password, Model model)
-    {
-        logger.debug("Post login: login = {} password = {}", username, password);//TODO remove
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        if (userDetails == null)
-        {
-            logger.debug("Login failed");
-            return "login?error";
-        }
-        else
-        {
-            logger.debug("Login successful. Account is {}", userDetails);
-            model.addAttribute("loggedUser", userDetails);
-            return "redirect:/";
-        }
-    }
 }

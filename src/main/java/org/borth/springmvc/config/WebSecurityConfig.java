@@ -11,7 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.Assert;
 
 /**
- * Created by kd on 14.03.2017.
+ * Configuration for allowing security for web
+ *
+ * @author Konstantin Valerievich Dichenko
  */
 @Configuration
 @EnableWebSecurity
@@ -20,14 +22,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebSecurityConfig(UserDetailsService userDetailsService)
+    public WebSecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder)
     {
         Assert.notNull(userDetailsService);
         this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .antMatchers("/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll().failureUrl("/login?error").loginProcessingUrl("/access")
+                .formLogin().loginPage("/login").permitAll().failureUrl("/login?error")
                 .and().logout().logoutSuccessUrl("/");
     }
 }
